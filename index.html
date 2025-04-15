@@ -1,72 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DailyX Support</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DailyX – Support & Info</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    * {
       margin: 0;
-      padding: 20px;
-      background-color: #1A202C;
-      color: #FFFFFF;
-      line-height: 1.5;
+      padding: 0;
+      box-sizing: border-box;
     }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0f172a;
+      color: #e2e8f0;
+      padding: 40px 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #f9fafb;
+    }
+
     .container {
       max-width: 1200px;
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 30px;
       justify-content: center;
     }
+
     .card {
-      background: #2D3748;
-      border-radius: 10px;
-      padding: 20px;
+      background: linear-gradient(to bottom right, #1e293b, #334155);
+      border: 1px solid #475569;
+      border-radius: 16px;
+      padding: 30px;
       width: 350px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      text-align: left;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
     }
-    .card h1 {
-      font-size: 24px;
-      color: #6B46C1;
-      margin: 0 0 10px;
+
+    .card:hover {
+      transform: translateY(-8px);
     }
+
+    .card h2 {
+      font-size: 1.5rem;
+      color: #a78bfa;
+      margin-bottom: 10px;
+    }
+
     .card p {
-      font-size: 16px;
-      color: #E2E8F0;
-      margin: 10px 0;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 12px;
+      color: #cbd5e1;
     }
+
     .contact {
-      font-weight: bold;
-      color: #48BB78;
+      color: #22c55e;
+      font-weight: 600;
     }
+
     .button {
       display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: linear-gradient(45deg, #6B46C1, #ED64A6);
-      color: #FFFFFF;
+      margin-top: 15px;
+      padding: 10px 16px;
+      font-size: 0.95rem;
+      border-radius: 8px;
       text-decoration: none;
-      border-radius: 5px;
-      font-size: 16px;
+      background: linear-gradient(90deg, #7c3aed, #ec4899);
+      color: #fff;
+      transition: background 0.3s ease;
     }
+
     .button:hover {
-      background: linear-gradient(45deg, #553C9A, #D53F8C);
+      background: linear-gradient(90deg, #6b21a8, #db2777);
     }
+
     @media (max-width: 768px) {
-      .card { width: 100%; }
+      .card {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="header">
+    <h1>DailyX Support & Info</h1>
+  </div>
+
   <div class="container">
     <!-- Help & Support -->
     <div class="card">
-      <h1>Help & Support</h1>
-      <p>Welcome to DailyX Help & Support! If you encounter any issues or have questions, feel free to reach out to our developer.</p>
+      <h2>Help & Support</h2>
+      <p>Welcome to DailyX Help & Support. If you face any issues or have suggestions, we're here to help.</p>
       <p>Developer: <span class="contact">Davx</span></p>
       <p>Contact: <a href="mailto:decode5724@gmail.com" class="contact">decode5724@gmail.com</a></p>
       <a href="#" class="button">Get Help</a>
@@ -74,19 +111,19 @@
 
     <!-- About -->
     <div class="card">
-      <h1>About</h1>
-      <p>DailyX is a task management and journaling app designed to help you stay organized and motivated. Created by Davx, it aims to provide a simple yet effective way to track your daily progress.</p>
-      <p>Version: 1.0.0 | Released: April , 2025</p>
-      <p>Contact: <a href="mailto:decode5724@gmail.com" class="contact">decode5724@gmail.com</a></p>
+      <h2>About</h2>
+      <p>DailyX is your companion for mindful productivity. From journaling to task tracking, it’s designed to help you grow daily.</p>
+      <p>Built with love by <span class="contact">Davx</span>.</p>
+      <p>Version: 1.0.0 • Released: April 2025</p>
       <a href="#" class="button">Learn More</a>
     </div>
 
     <!-- Privacy Policy -->
     <div class="card">
-      <h1>Privacy Policy</h1>
-      <p>DailyX is committed to protecting your privacy. We collect minimal data to ensure app functionality, such as task completion records. No personal data is shared with third parties.</p>
-      <p>For details, contact: <a href="mailto:decode5724@gmail.com" class="contact">decode5724@gmail.com</a></p>
-      <p>Last Updated: April , 2025</p>
+      <h2>Privacy Policy</h2>
+      <p>Your data stays with you. We only store what's necessary to power the core features — nothing more.</p>
+      <p>No third-party sharing. Transparent and minimal data usage.</p>
+      <p>Last Updated: April 2025</p>
       <a href="#" class="button">View Policy</a>
     </div>
   </div>
