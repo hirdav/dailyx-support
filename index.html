@@ -3,129 +3,154 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DailyX – Support & Info</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <title>DailyX • Support</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
+    :root {
+      --primary: #7f5af0;
+      --secondary: #2cb67d;
+      --bg-dark: #16161a;
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --text-main: #fffffe;
+      --text-secondary: #94a1b2;
+      --glass: rgba(255, 255, 255, 0.08);
+    }
+
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #0f172a;
-      color: #e2e8f0;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
       padding: 40px 20px;
     }
 
-    .header {
-      text-align: center;
-      margin-bottom: 40px;
+    h1, h2 {
+      font-weight: 700;
     }
 
-    .header h1 {
-      font-size: 2.5rem;
-      font-weight: 600;
-      color: #f9fafb;
+    a {
+      color: var(--secondary);
+      text-decoration: none;
     }
 
     .container {
       max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 30px;
-      justify-content: center;
     }
 
     .card {
-      background: linear-gradient(to bottom right, #1e293b, #334155);
-      border: 1px solid #475569;
+      background: var(--glass);
       border-radius: 16px;
-      padding: 30px;
-      width: 350px;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      padding: 24px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-5px);
     }
 
     .card h2 {
-      font-size: 1.5rem;
-      color: #a78bfa;
+      color: var(--primary);
       margin-bottom: 10px;
+      font-size: 22px;
     }
 
     .card p {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 12px;
-      color: #cbd5e1;
-    }
-
-    .contact {
-      color: #22c55e;
-      font-weight: 600;
+      color: var(--text-secondary);
+      margin: 10px 0;
     }
 
     .button {
       display: inline-block;
-      margin-top: 15px;
-      padding: 10px 16px;
-      font-size: 0.95rem;
-      border-radius: 8px;
-      text-decoration: none;
-      background: linear-gradient(90deg, #7c3aed, #ec4899);
+      margin-top: 20px;
+      padding: 12px 20px;
+      background: linear-gradient(135deg, var(--primary), #e53170);
       color: #fff;
+      font-weight: 600;
+      border-radius: 8px;
       transition: background 0.3s ease;
     }
 
     .button:hover {
-      background: linear-gradient(90deg, #6b21a8, #db2777);
+      background: linear-gradient(135deg, #683bd8, #c91b5e);
     }
 
-    @media (max-width: 768px) {
-      .card {
-        width: 100%;
+    footer {
+      text-align: center;
+      color: var(--text-secondary);
+      margin-top: 60px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 500px) {
+      body {
+        padding: 20px 10px;
+      }
+
+      .card h2 {
+        font-size: 20px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="header">
-    <h1>DailyX Support & Info</h1>
-  </div>
 
-  <div class="container">
-    <!-- Help & Support -->
-    <div class="card">
+  <main class="container">
+    <div class="card" id="support">
       <h2>Help & Support</h2>
-      <p>Welcome to DailyX Help & Support. If you face any issues or have suggestions, we're here to help.</p>
-      <p>Developer: <span class="contact">Davx</span></p>
-      <p>Contact: <a href="mailto:decode5724@gmail.com" class="contact">decode5724@gmail.com</a></p>
-      <a href="#" class="button">Get Help</a>
+      <p>Welcome to the DailyX support page. Having trouble? Get in touch and we'll sort it out!</p>
+      <p><strong>Developer:</strong> Davx</p>
+      <p><strong>Email:</strong> <a href="mailto:decode5724@gmail.com">decode5724@gmail.com</a></p>
+      <a href="#contact" class="button">Get Help</a>
     </div>
 
-    <!-- About -->
-    <div class="card">
-      <h2>About</h2>
-      <p>DailyX is your companion for mindful productivity. From journaling to task tracking, it’s designed to help you grow daily.</p>
-      <p>Built with love by <span class="contact">Davx</span>.</p>
-      <p>Version: 1.0.0 • Released: April 2025</p>
-      <a href="#" class="button">Learn More</a>
+    <div class="card" id="about">
+      <h2>About DailyX</h2>
+      <p>DailyX is your all-in-one journal + task app. Stay focused, reflect, and grow daily.</p>
+      <p><strong>Version:</strong> 1.0.0</p>
+      <p><strong>Release:</strong> April 2025</p>
+      <a href="#footer" class="button">Learn More</a>
     </div>
 
-    <!-- Privacy Policy -->
-    <div class="card">
+    <div class="card" id="privacy">
       <h2>Privacy Policy</h2>
-      <p>Your data stays with you. We only store what's necessary to power the core features — nothing more.</p>
-      <p>No third-party sharing. Transparent and minimal data usage.</p>
-      <p>Last Updated: April 2025</p>
-      <a href="#" class="button">View Policy</a>
+      <p>Your data, your rules. We only store what’s needed — no creepy trackers, no 3rd parties.</p>
+      <p>For more info, email us anytime.</p>
+      <p><strong>Last Updated:</strong> April 2025</p>
+      <a href="#footer" class="button">View Policy</a>
     </div>
-  </div>
+  </main>
+
+  <footer id="footer">
+    © 2025 DailyX · Made with 💜 by Davx · <a href="mailto:decode5724@gmail.com">Contact</a>
+  </footer>
+
+  <script>
+    // Smooth scroll on button clicks
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+  </script>
+
 </body>
 </html>
