@@ -13,8 +13,8 @@
       --button: #800080; /* Purple for buttons */
       --boundary: #000000; /* Black for borders and outlines */
       --subtext: #000080; /* Navy blue for secondary text */
-      --bg-dark: #f5f5f5; /* Off-white background for brutalist rawness */
-      --card-bg: #ffffff; /* White cards for contrast */
+      --bg-dark: #f5f5f5; /* Off-white background */
+      --card-bg: #ffffff; /* White cards */
       --text-main: #000000; /* Black for main text */
     }
 
@@ -30,18 +30,57 @@
       color: var(--text-main);
       line-height: 1.4;
       padding: 20px;
-      font-weight: 700; /* Bold default for brutalism */
+      font-weight: 700;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Background pulse effect */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(0, 0, 0, 0.05) 0%, transparent 70%);
+      opacity: 0.3;
+      animation: pulseBg 10s infinite ease-in-out;
+      z-index: -1;
     }
 
     h1, h2 {
-      font-weight: 900; /* Extra bold for headings */
-      text-transform: uppercase; /* Aggressive typography */
+      font-weight: 900;
+      text-transform: uppercase;
     }
 
     a {
-      color: var(--button); /* Purple for links */
+      color: var(--button);
       text-decoration: none;
       font-weight: 700;
+      position: relative;
+      transition: color 0.2s ease;
+    }
+
+    /* Link hover glitch underline */
+    a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--button);
+      transition: width 0.3s ease;
+    }
+
+    a:hover::after {
+      width: 100%;
+      animation: glitchLine 0.3s steps(5) infinite;
+    }
+
+    a:hover {
+      color: #4b0082; /* Darker purple */
     }
 
     .container {
@@ -55,60 +94,147 @@
 
     .card {
       background: var(--card-bg);
-      border: 4px solid var(--boundary); /* Thick black borders */
+      border: 4px solid var(--boundary);
       padding: 20px;
-      box-shadow: 8px 8px 0 var(--boundary); /* Heavy black shadow */
-      transition: transform 0.2s ease;
+      box-shadow: 8px 8px 0 var(--boundary);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       position: relative;
       overflow: hidden;
+      opacity: 0;
+      transform: translateY(50px) rotate(2deg);
+      animation: slideIn 0.6s ease-out forwards;
+      animation-delay: calc(0.1s * var(--card-index));
     }
 
+    /* Card border flicker on hover */
     .card:hover {
-      transform: translate(-4px, -4px); /* Slight lift with shadow */
+      transform: translate(-4px, -4px) scale(1.02);
       box-shadow: 12px 12px 0 var(--boundary);
     }
 
+    .card:hover::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 4px solid var(--boundary);
+      animation: flickerBorder 0.2s infinite;
+    }
+
+    .card:nth-child(1) { --card-index: 1; }
+    .card:nth-child(2) { --card-index: 2; }
+    .card:nth-child(3) { --card-index: 3; }
+
     .card h2 {
-      color: var(--primary); /* Black for headings */
+      color: var(--primary);
       margin-bottom: 12px;
       font-size: 24px;
       letter-spacing: 1px;
+      opacity: 0;
+      animation: fadeIn 0.5s ease-out 0.3s forwards;
     }
 
     .card p {
-      color: var(--subtext); /* Navy blue for subtext */
+      color: var(--subtext);
       margin: 8px 0;
       font-size: 16px;
-      font-weight: 400; /* Lighter for contrast */
+      font-weight: 400;
+      opacity: 0;
+      animation: fadeIn 0.5s ease-out 0.4s forwards;
     }
 
     .button {
       display: inline-block;
       margin-top: 16px;
       padding: 12px 24px;
-      background: var(--button); /* Purple background */
-      color: var(--card-bg); /* White text for contrast */
+      background: var(--button);
+      color: var(--card-bg);
       font-weight: 900;
       text-transform: uppercase;
-      border: 3px solid var(--boundary); /* Black border */
-      box-shadow: 4px 4px 0 var(--boundary); /* Black shadow */
-      transition: all 0.2s ease;
+      border: 3px solid var(--boundary);
+      box-shadow: 4px 4px 0 var(--boundary);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      position: relative;
+      overflow: hidden;
+      animation: pulseButton 3s infinite ease-in-out; /* Periodic pulse */
     }
 
     .button:hover {
-      background: #4b0082; /* Darker purple for hover */
-      transform: translate(-2px, -2px);
+      background: #4b0082;
+      transform: translate(-2px, -2px) scale(1.05);
       box-shadow: 6px 6px 0 var(--boundary);
+      animation: none; /* Stop pulse on hover */
+    }
+
+    .button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: left 0.2s ease;
+    }
+
+    .button:hover::before {
+      left: 100%;
     }
 
     footer {
       text-align: center;
-      color: var(--subtext); /* Navy blue for footer */
+      color: var(--subtext);
       margin-top: 40px;
       font-size: 14px;
       font-weight: 700;
-      border-top: 4px solid var(--boundary); /* Black top border */
+      border-top: 4px solid var(--boundary);
       padding-top: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUpFooter 0.7s ease-out 0.8s forwards; /* Slide up with shake */
+    }
+
+    /* Keyframe animations */
+    @keyframes pulseBg {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.05); } /* Subtle background pulse */
+    }
+
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0) rotate(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes flickerBorder {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; } /* Border flickers like a glitch */
+    }
+
+    @keyframes pulseButton {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); } /* Subtle button pulse */
+    }
+
+    @keyframes slideUpFooter {
+      0% { opacity: 0; transform: translateY(20px); }
+      80% { opacity: 1; transform: translateY(0); }
+      90% { transform: translateY(2px); } /* Slight shake */
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes glitchLine {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(2px); } /* Glitchy underline shake */
     }
 
     @media (max-width: 500px) {
