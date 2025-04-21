@@ -5,17 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DailyX • Support</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap">
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     :root {
-      --primary: #7f5af0;
-      --secondary: #2cb67d;
-      --bg-dark: #16161a;
-      --card-bg: rgba(255, 255, 255, 0.04);
-      --text-main: #fffffe;
-      --text-secondary: #94a1b2;
-      --glass: rgba(255, 255, 255, 0.08);
+      --primary: #ff2e63; /* Bold pink for contrast */
+      --secondary: #00ff9f; /* Neon green for pop */
+      --accent: #000000; /* Stark black for outlines */
+      --bg-dark: #f5f5f5; /* Off-white, raw background */
+      --card-bg: #ffffff; /* White cards for brutal contrast */
+      --text-main: #000000; /* Black text for readability */
+      --text-secondary: #333333; /* Dark gray for secondary text */
     }
 
     * {
@@ -28,81 +28,101 @@
       font-family: 'Inter', sans-serif;
       background-color: var(--bg-dark);
       color: var(--text-main);
-      line-height: 1.6;
-      padding: 40px 20px;
+      line-height: 1.4;
+      padding: 20px;
+      font-weight: 700; /* Bold default for brutalism */
     }
 
     h1, h2 {
-      font-weight: 700;
+      font-weight: 900; /* Extra bold for headings */
+      text-transform: uppercase; /* Aggressive typography */
     }
 
     a {
       color: var(--secondary);
       text-decoration: none;
+      font-weight: 700;
     }
 
     .container {
       max-width: 1200px;
       margin: auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
     }
 
     .card {
-      background: var(--glass);
-      border-radius: 16px;
-      padding: 24px;
-      backdrop-filter: blur(20px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: var(--card-bg);
+      border: 4px solid var(--accent); /* Thick, harsh borders */
+      padding: 20px;
+      box-shadow: 8px 8px 0 var(--accent); /* Offset, heavy shadow */
+      transition: transform 0.2s ease;
+      position: relative;
+      overflow: hidden;
     }
 
     .card:hover {
-      transform: translateY(-5px);
+      transform: translate(-4px, -4px); /* Slight lift with shadow */
+      box-shadow: 12px 12px 0 var(--accent);
     }
 
     .card h2 {
       color: var(--primary);
-      margin-bottom: 10px;
-      font-size: 22px;
+      margin-bottom: 12px;
+      font-size: 24px;
+      letter-spacing: 1px;
     }
 
     .card p {
       color: var(--text-secondary);
-      margin: 10px 0;
+      margin: 8px 0;
+      font-size: 16px;
+      font-weight: 400; /* Lighter for contrast */
     }
 
     .button {
       display: inline-block;
-      margin-top: 20px;
-      padding: 12px 20px;
-      background: linear-gradient(135deg, var(--primary), #e53170);
-      color: #fff;
-      font-weight: 600;
-      border-radius: 8px;
-      transition: background 0.3s ease;
+      margin-top: 16px;
+      padding: 12px 24px;
+      background: var(--secondary);
+      color: var(--accent);
+      font-weight: 900;
+      text-transform: uppercase;
+      border: 3px solid var(--accent);
+      box-shadow: 4px 4px 0 var(--accent);
+      transition: all 0.2s ease;
     }
 
     .button:hover {
-      background: linear-gradient(135deg, #683bd8, #c91b5e);
+      background: var(--primary);
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 var(--accent);
     }
 
     footer {
       text-align: center;
       color: var(--text-secondary);
-      margin-top: 60px;
+      margin-top: 40px;
       font-size: 14px;
+      font-weight: 700;
+      border-top: 4px solid var(--accent);
+      padding-top: 20px;
     }
 
     @media (max-width: 500px) {
       body {
-        padding: 20px 10px;
+        padding: 10px;
       }
 
       .card h2 {
         font-size: 20px;
+      }
+
+      .button {
+        padding: 10px 20px;
+        font-size: 14px;
       }
     }
   </style>
