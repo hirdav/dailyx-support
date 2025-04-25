@@ -5,19 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DailyX • Support</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap">
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  
-
   <style>
     :root {
-      --primary: #000000; /* Black for primary elements */
-      --button: #800080; /* Purple for buttons */
-      --boundary: #000000; /* Black for borders and outlines */
-      --subtext: #000080; /* Navy blue for secondary text */
-      --bg-dark: #f5f5f5; /* Off-white background */
-      --card-bg: #ffffff; /* White cards */
-      --text-main: #000000; /* Black for main text */
+      --primary: #000000;
+      --button: #800080;
+      --boundary: #000000;
+      --subtext: #000080;
+      --bg-dark: #f5f5f5;
+      --card-bg: #ffffff;
+      --text-main: #000000;
     }
 
     * {
@@ -27,7 +25,7 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Ubuntu Mono', monospace;
       background-color: var(--bg-dark);
       color: var(--text-main);
       line-height: 1.4;
@@ -37,7 +35,6 @@
       overflow-x: hidden;
     }
 
-    /* Background pulse effect */
     body::before {
       content: '';
       position: fixed;
@@ -64,7 +61,6 @@
       transition: color 0.2s ease;
     }
 
-    /* Link hover glitch underline */
     a::after {
       content: '';
       position: absolute;
@@ -82,7 +78,7 @@
     }
 
     a:hover {
-      color: #4b0082; /* Darker purple */
+      color: #4b0082;
     }
 
     .container {
@@ -108,7 +104,6 @@
       animation-delay: calc(0.1s * var(--card-index));
     }
 
-    /* Card border flicker on hover */
     .card:hover {
       transform: translate(-4px, -4px) scale(1.02);
       box-shadow: 12px 12px 0 var(--boundary);
@@ -142,7 +137,7 @@
       color: var(--subtext);
       margin: 8px 0;
       font-size: 16px;
-      font-weight: 400;
+      font-weight: 600; /* semi-bold */
       opacity: 0;
       animation: fadeIn 0.5s ease-out 0.4s forwards;
     }
@@ -160,14 +155,14 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
       position: relative;
       overflow: hidden;
-      animation: pulseButton 3s infinite ease-in-out; /* Periodic pulse */
+      animation: pulseButton 3s infinite ease-in-out;
     }
 
     .button:hover {
       background: #4b0082;
       transform: translate(-2px, -2px) scale(1.05);
       box-shadow: 6px 6px 0 var(--boundary);
-      animation: none; /* Stop pulse on hover */
+      animation: none;
     }
 
     .button::before {
@@ -190,18 +185,17 @@
       color: var(--subtext);
       margin-top: 40px;
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 600; /* semi-bold */
       border-top: 4px solid var(--boundary);
       padding-top: 20px;
       opacity: 0;
       transform: translateY(20px);
-      animation: slideUpFooter 0.7s ease-out 0.8s forwards; /* Slide up with shake */
+      animation: slideUpFooter 0.7s ease-out 0.8s forwards;
     }
 
-    /* Keyframe animations */
     @keyframes pulseBg {
       0%, 100% { opacity: 0.3; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.05); } /* Subtle background pulse */
+      50% { opacity: 0.5; transform: scale(1.05); }
     }
 
     @keyframes slideIn {
@@ -219,24 +213,24 @@
 
     @keyframes flickerBorder {
       0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; } /* Border flickers like a glitch */
+      50% { opacity: 0.5; }
     }
 
     @keyframes pulseButton {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.03); } /* Subtle button pulse */
+      50% { transform: scale(1.03); }
     }
 
     @keyframes slideUpFooter {
       0% { opacity: 0; transform: translateY(20px); }
       80% { opacity: 1; transform: translateY(0); }
-      90% { transform: translateY(2px); } /* Slight shake */
+      90% { transform: translateY(2px); }
       100% { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes glitchLine {
       0%, 100% { transform: translateX(0); }
-      50% { transform: translateX(2px); } /* Glitchy underline shake */
+      50% { transform: translateX(2px); }
     }
 
     @media (max-width: 500px) {
@@ -273,7 +267,6 @@
       <p><strong>Release:</strong> 25 April 2025</p>
       <a href="about.html" class="button">Learn More</a> 
     </div>
-    
 
     <div class="card" id="privacy">
       <h2>Privacy Policy</h2>
@@ -289,7 +282,6 @@
   </footer>
 
   <script>
-    // Smooth scroll on button clicks
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener("click", function (e) {
         e.preventDefault();
