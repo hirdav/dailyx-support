@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DailyX • Support</title>
+  <title>DailyX • Your Productivity Hub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;600&display=swap">
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
   <style>
     :root {
       --primary: #000000;
@@ -28,57 +29,28 @@
       font-family: 'Ubuntu Mono', monospace;
       background-color: var(--bg-dark);
       color: var(--text-main);
-      line-height: 1.4;
+      line-height: 1.5;
       padding: 20px;
-      font-weight: 700;
-      position: relative;
-      overflow-x: hidden;
     }
 
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle, rgba(0, 0, 0, 0.05) 0%, transparent 70%);
-      opacity: 0.3;
-      animation: pulseBg 10s infinite ease-in-out;
-      z-index: -1;
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      animation: fadeIn 1s ease-in-out;
     }
 
-    h1, h2 {
-      font-weight: 900;
+    header h1 {
+      font-size: 38px;
       text-transform: uppercase;
+      font-weight: 600;
+      color: var(--primary);
     }
 
-    a {
-      color: var(--button);
-      text-decoration: none;
-      font-weight: 700;
-      position: relative;
-      transition: color 0.2s ease;
-    }
-
-    a::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--button);
-      transition: width 0.3s ease;
-    }
-
-    a:hover::after {
-      width: 100%;
-      animation: glitchLine 0.3s steps(5) infinite;
-    }
-
-    a:hover {
-      color: #4b0082;
+    header p {
+      margin-top: 10px;
+      font-size: 18px;
+      color: var(--subtext);
+      font-weight: 600;
     }
 
     .container {
@@ -86,60 +58,38 @@
       margin: auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      padding: 20px;
+      gap: 24px;
+      padding: 10px;
     }
 
     .card {
       background: var(--card-bg);
       border: 4px solid var(--boundary);
       padding: 20px;
-      box-shadow: 8px 8px 0 var(--boundary);
+      box-shadow: 6px 6px 0 var(--boundary);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-      overflow: hidden;
       opacity: 0;
-      transform: translateY(50px) rotate(2deg);
-      animation: slideIn 0.6s ease-out forwards;
-      animation-delay: calc(0.1s * var(--card-index));
+      transform: translateY(30px);
+      animation: slideUp 0.6s ease-out forwards;
     }
 
     .card:hover {
-      transform: translate(-4px, -4px) scale(1.02);
-      box-shadow: 12px 12px 0 var(--boundary);
+      transform: translate(-4px, -4px);
+      box-shadow: 10px 10px 0 var(--boundary);
     }
-
-    .card:hover::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 4px solid var(--boundary);
-      animation: flickerBorder 0.2s infinite;
-    }
-
-    .card:nth-child(1) { --card-index: 1; }
-    .card:nth-child(2) { --card-index: 2; }
-    .card:nth-child(3) { --card-index: 3; }
 
     .card h2 {
-      color: var(--primary);
+      font-size: 22px;
       margin-bottom: 12px;
-      font-size: 24px;
-      letter-spacing: 1px;
-      opacity: 0;
-      animation: fadeIn 0.5s ease-out 0.3s forwards;
+      color: var(--primary);
+      text-transform: uppercase;
+      font-weight: 600;
     }
 
     .card p {
-      color: var(--subtext);
-      margin: 8px 0;
       font-size: 16px;
-      font-weight: 600; /* semi-bold */
-      opacity: 0;
-      animation: fadeIn 0.5s ease-out 0.4s forwards;
+      color: var(--subtext);
+      font-weight: 600;
     }
 
     .button {
@@ -147,99 +97,50 @@
       margin-top: 16px;
       padding: 12px 24px;
       background: var(--button);
-      color: var(--card-bg);
-      font-weight: 900;
+      color: #fff;
+      font-weight: 600;
       text-transform: uppercase;
       border: 3px solid var(--boundary);
       box-shadow: 4px 4px 0 var(--boundary);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-      position: relative;
-      overflow: hidden;
-      animation: pulseButton 3s infinite ease-in-out;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .button:hover {
       background: #4b0082;
-      transform: translate(-2px, -2px) scale(1.05);
+      transform: translate(-2px, -2px);
       box-shadow: 6px 6px 0 var(--boundary);
-      animation: none;
-    }
-
-    .button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.2);
-      transition: left 0.2s ease;
-    }
-
-    .button:hover::before {
-      left: 100%;
     }
 
     footer {
       text-align: center;
       color: var(--subtext);
-      margin-top: 40px;
+      margin-top: 60px;
       font-size: 14px;
-      font-weight: 600; /* semi-bold */
-      border-top: 4px solid var(--boundary);
+      font-weight: 600;
       padding-top: 20px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: slideUpFooter 0.7s ease-out 0.8s forwards;
+      border-top: 4px solid var(--boundary);
+      animation: fadeIn 1.5s ease-in;
     }
 
-    @keyframes pulseBg {
-      0%, 100% { opacity: 0.3; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.05); }
-    }
-
-    @keyframes slideIn {
+    @keyframes slideUp {
       to {
         opacity: 1;
-        transform: translateY(0) rotate(0);
+        transform: translateY(0);
       }
     }
 
     @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
-
-    @keyframes flickerBorder {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-
-    @keyframes pulseButton {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.03); }
-    }
-
-    @keyframes slideUpFooter {
-      0% { opacity: 0; transform: translateY(20px); }
-      80% { opacity: 1; transform: translateY(0); }
-      90% { transform: translateY(2px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes glitchLine {
-      0%, 100% { transform: translateX(0); }
-      50% { transform: translateX(2px); }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     @media (max-width: 500px) {
-      body {
-        padding: 10px;
+      header h1 {
+        font-size: 28px;
       }
 
       .card h2 {
-        font-size: 20px;
+        font-size: 18px;
       }
 
       .button {
@@ -249,31 +150,36 @@
     }
   </style>
 </head>
+
 <body>
+  <header>
+    <h1>Welcome to DailyX</h1>
+    <p>Your Productivity World • Track. Reflect. Grow.</p>
+  </header>
 
   <main class="container">
-    <div class="card" id="support">
-      <h2>Help & Support</h2>
-      <p>Welcome to the DailyX support page. Having trouble? Get in touch and we'll sort it out! </p>
-      <p><strong>Developer:</strong> Davx</p>
-      <p><strong>Email:</strong> <a href="mailto:decode5724@gmail.com">decode5724@gmail.com</a></p>
+    <div class="card">
+      <h2>Support & Help</h2>
+      <p>Need help with the app? Contact us or check out common questions here.</p>
       <a href="#contact" class="button">Get Help</a>
     </div>
 
-    <div class="card" id="about">
+    <div class="card">
       <h2>About DailyX</h2>
-      <p>DailyX is your all-in-one journal + task app. Stay focused, reflect, and grow daily.</p>
-      <p><strong>Version:</strong> 1.0.0</p>
-      <p><strong>Release:</strong> 25 April 2025</p>
-      <a href="about.html" class="button">Learn More</a> 
+      <p>Discover how DailyX turns tasks into mindful moments and keeps you consistent.</p>
+      <a href="about.html" class="button">Learn More</a>
     </div>
 
-    <div class="card" id="privacy">
+    <div class="card">
       <h2>Privacy Policy</h2>
-      <p>Your data, your rules. We only store what’s needed — no creepy trackers, no 3rd parties.</p>
-      <p>For more info, email us anytime.</p>
-      <p><strong>Last Updated:</strong> April 2025</p>
+      <p>We value your privacy. Learn how we protect your data and respect your space.</p>
       <a href="#footer" class="button">View Policy</a>
+    </div>
+
+    <div class="card">
+      <h2>Productivity Hacks</h2>
+      <p>Tips, strategies, and must-read books to level up your focus and output.</p>
+      <a href="productivity.html" class="button">Explore Tips</a>
     </div>
   </main>
 
@@ -282,6 +188,13 @@
   </footer>
 
   <script>
+    // Animate cards on load
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card, index) => {
+      card.style.animationDelay = `${index * 0.2}s`;
+    });
+
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener("click", function (e) {
         e.preventDefault();
@@ -292,6 +205,5 @@
       });
     });
   </script>
-
 </body>
 </html>
