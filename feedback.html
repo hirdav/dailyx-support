@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-[#f5f5f5] text-black font-inter">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback - DailyX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --primary: #000000;
+      --button: #800080;
+      --subtext: #000080;
+      --bg-dark: #f5f5f5;
+      --card-bg: #ffffff;
+    }
+    .pulse-btn {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    .font-mono {
+      font-family: 'Ubuntu Mono', monospace;
+    }
+  </style>
+</head>
+<body class="min-h-screen p-6 flex flex-col">
+
+  <!-- Header -->
+  <header class="text-center mb-10">
+    <h1 class="text-4xl font-bold text-[var(--primary)]">DailyX Feedback</h1>
+    <p class="text-lg text-[var(--subtext)] mt-2">Share your thoughts and help shape DailyX.</p>
+    <nav class="mt-4 space-x-4 text-[var(--subtext)] font-mono text-sm">
+      <a href="index.html" class="hover:underline">Home</a>
+      <a href="about.html" class="hover:underline">About</a>
+      <a href="productivity.html" class="hover:underline">Productivity</a>
+      <a href="feedback.html" class="underline font-bold">Feedback</a>
+    </nav>
+  </header>
+
+  <!-- Feedback Form -->
+  <main class="flex-1 flex flex-col items-center">
+    <div class="bg-[var(--card-bg)] p-8 rounded-2xl shadow-lg w-full max-w-2xl">
+      <h2 class="text-2xl font-bold mb-4 text-center">Leave Your Feedback</h2>
+      <form action="https://getform.io/f/bwnqpmka" method="POST" class="flex flex-col space-y-6" id="feedbackForm">
+        
+        <!-- Feedback Textarea -->
+        <textarea name="feedback" required rows="6" placeholder="Write your feedback here..." class="w-full p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--button)] resize-none"></textarea>
+
+        <!-- Optional ID Field -->
+        <input type="text" name="user_id" placeholder="Optional: Insta ID / Gmail / Phone" class="w-full p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--button)]">
+
+        <!-- Hidden auto-user-tag -->
+        <input type="hidden" name="user_tag" value="DailyXFeedbackUser" />
+
+        <button type="submit" class="pulse-btn w-full bg-[var(--button)] text-white font-bold py-3 rounded-full hover:bg-purple-700 transition-all">
+          Submit Feedback
+        </button>
+      </form>
+
+      <!-- Thank you message (hidden by default) -->
+      <div id="thankYouMessage" class="hidden mt-6 text-center text-green-600 font-mono text-md">
+        🎉 Thank you for your feedback!
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-12 text-center text-[var(--subtext)] font-mono text-sm">
+    &copy; 2025 DailyX. Designed with calm clarity.
+  </footer>
+
+  <!-- Small JS to show thank you message without reload -->
+  <script>
+    const form = document.getElementById('feedbackForm');
+    const thankYou = document.getElementById('thankYouMessage');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          form.classList.add('hidden');
+          thankYou.classList.remove('hidden');
+        } else {
+          alert('Something went wrong. Please try again.');
+        }
+      } catch (error) {
+        alert('Error submitting feedback. Please check your connection.');
+      }
+    });
+  </script>
+
+</body>
+</html>
