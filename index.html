@@ -122,6 +122,57 @@
       animation: fadeIn 1.5s ease-in;
     }
 
+    /* Privacy Policy Popup Styles */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 10;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup-content {
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+      animation: popupShow 0.3s ease-out;
+    }
+
+    .popup-content h2 {
+      font-size: 24px;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .popup-content p {
+      font-size: 16px;
+      color: var(--subtext);
+      margin-bottom: 20px;
+    }
+
+    .popup-close {
+      background: var(--button);
+      color: #fff;
+      padding: 12px 20px;
+      text-transform: uppercase;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      box-shadow: 4px 4px 0 var(--boundary);
+    }
+
+    .popup-close:hover {
+      background: #4b0082;
+    }
+
     @keyframes slideUp {
       to {
         opacity: 1;
@@ -132,6 +183,11 @@
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
+    }
+
+    @keyframes popupShow {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     @media (max-width: 500px) {
@@ -173,7 +229,7 @@
     <div class="card">
       <h2>Privacy Policy</h2>
       <p>We value your privacy. Learn how we protect your data and respect your space.</p>
-      <a href="#footer" class="button">View Policy</a>
+      <a href="#" id="privacyPolicyButton" class="button">View Policy</a>
     </div>
 
     <div class="card">
@@ -195,22 +251,30 @@
     © 2025 DailyX · Made with 💜 by Davx · <a href="mailto:decode5724@gmail.com">Contact</a>
   </footer>
 
+  <!-- Privacy Policy Popup -->
+  <div id="privacyPopup" class="popup-overlay">
+    <div class="popup-content">
+      <h2>Privacy Policy</h2>
+      <p>We value your privacy and are committed to protecting your personal data. Here’s how we collect, use, and protect your information:</p>
+      <ul>
+        <li>We only collect data necessary for providing our services.</li>
+        <li>All personal data is stored securely and never shared without your consent.</li>
+        <li>You have full control over the data we store.</li>
+      </ul>
+      <button class="popup-close" id="closePopup">Close</button>
+    </div>
+  </div>
+
   <script>
-    // Animate cards on load
-    const cards = document.querySelectorAll('.card');
-    cards.forEach((card, index) => {
-      card.style.animationDelay = `${index * 0.2}s`;
+    // Open popup when the "View Policy" button is clicked
+    document.getElementById('privacyPolicyButton').addEventListener('click', function(event) {
+      event.preventDefault();
+      document.getElementById('privacyPopup').style.display = 'flex';
     });
 
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute("href"));
-        if (target) {
-          target.scrollIntoView({ behavior: "smooth" });
-        }
-      });
+    // Close popup when the "Close" button is clicked
+    document.getElementById('closePopup').addEventListener('click', function() {
+      document.getElementById('privacyPopup').style.display = 'none';
     });
   </script>
 </body>
